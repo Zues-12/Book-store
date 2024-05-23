@@ -152,8 +152,20 @@ router.get("/cart-item-count", async (req, res) => {
 });
 
 
-
-
+//get books from same category
+router.get("/get-book-by-category/:category", async (req, res) => {
+  try {
+    const { category } = req.params;
+    const book = await Book.find({category}).sort({createdAt:-1});
+    return res.json({
+      status: "Success",
+      data: book,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "An error occurred" });
+  }
+});
 
 
 

@@ -27,7 +27,7 @@ const UpdateBooks = () => {
         price: res.data.data.price,
         desc: res.data.data.desc,
         language: res.data.data.language,
-        category: res.data.data.language,
+        category: res.data.data.category,
       });
     };
     fetch();

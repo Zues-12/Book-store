@@ -30,7 +30,7 @@ const book = new mongoose.Schema(
       type: String,
       required: true,
       default: "Misc",
-      enum: ["Novel", "Travalogue", "Biography","Short Stories","Poetry","Misc"],
+      enum: ["Novel", "Travalogue", "Biography","Short-Stories","Poetry","Misc"],
     },
   },
   { timestamps: true }
