@@ -155,7 +155,7 @@ const AddBook = () => {
             onChange={change}
              className=" my-2 mx-4 p-2 bg-zinc-900 text-zinc-400 rounded-sm outline-none " name="category" id="categroy">
             <option value="Novel">Novel</option>
-            <option value="Travalogue">Travalogue</option>
+            <option value="Travelogue">Travelogue</option>
             <option value="Biography">Biography</option>
             <option value="Short-Stories">Short-Stories</option>
             <option value="Poetry">Poetry</option>
