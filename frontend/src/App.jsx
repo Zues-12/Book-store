@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -17,7 +17,12 @@ import Settings from "./pages/Settings";
 import AllOrders from "./components/AdminPages/AllOrders";
 import AddBook from "./components/AdminPages/AddBook";
 import UpdateBooks from "./components/AdminPages/UpdateBooks";
+import Sidebar from "./components/Sidebar";
 const App = () => {
+  const [isSidebarOpen, setIsSidebarOpen]=useState(false);
+  const toggleSidebar = () =>{
+    setIsSidebarOpen(!isSidebarOpen);
+  };
   const dispatch = useDispatch();
   const role = useSelector((state) => state.auth.role);
   useEffect(() => {
@@ -32,7 +37,8 @@ const App = () => {
   }, []);
   return (
     <div className="">
-      <Navbar />
+      <Navbar toggleSidebar={toggleSidebar}/>
+      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar}/>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/all-books" element={<AllBooks />} />

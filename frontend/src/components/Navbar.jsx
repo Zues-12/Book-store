@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { CiMenuBurger } from "react-icons/ci";
 import { useSelector } from "react-redux";
-const Navbar = () => {
+const Navbar = ({toggleSidebar}) => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const role = useSelector((state) => state.auth.role);
   var links = [
@@ -45,7 +46,11 @@ const Navbar = () => {
         data-twe-navbar-ref
       >
         <div className="flex w-full flex-wrap items-center justify-between px-3">
-          <div className="ms-2  w-3/6 lg:w-1/6">
+          <div className="ms-2  w-3/6 lg:w-1/6 flex justify-center items-center gap-4">
+            <div>
+              <button className="h-10 w-10" onClick={toggleSidebar}>
+            <CiMenuBurger /></button>
+            </div>
             <Link
               to="/"
               className="flex text-2xl font-semibold items-center justify-center "
