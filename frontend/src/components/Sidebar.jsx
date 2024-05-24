@@ -17,7 +17,7 @@ const Sidebar = ({isOpen, toggleSidebar}) => {
         {
             title: "Categories",
             subitems: [
-                { title: "Poetry", link: '/categories/Poetry' },
+                { title: "Poetry", link: '/Category/Poetry' },
                 { title: "Travelouge", link: '/categories/non-fiction' },
                 { title: "Biography", link: '/categories/sci-fi' },
               ]

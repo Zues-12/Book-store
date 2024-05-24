@@ -18,6 +18,7 @@ import AllOrders from "./components/AdminPages/AllOrders";
 import AddBook from "./components/AdminPages/AddBook";
 import UpdateBooks from "./components/AdminPages/UpdateBooks";
 import Sidebar from "./components/Sidebar";
+import Category from "./pages/Category";
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen]=useState(false);
   const toggleSidebar = () =>{
@@ -42,6 +43,7 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/all-books" element={<AllBooks />} />
+        <Route path="/Category/:category" element={<Category />} />
         <Route path="/view-book-details/:id" element={<ViewBookDetails />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
