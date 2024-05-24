@@ -114,7 +114,7 @@ const Cart = () => {
               </div>
               <div className="flex mt-4 w-full md:w-auto items-center justify-between">
                 <h2 className="text-zinc-100 text-3xl font-semibold flex">
-                  ₹ {items.price}
+                  Rs {items.price}
                 </h2>
                 <button
                   className="bg-red-100 text-red-700 border border-red-700 rounded p-2 ms-12"
@@ -134,7 +134,7 @@ const Cart = () => {
               Total Amount
             </h1>
             <div className="mt-3 flex items-center justify-between text-xl text-zinc-200">
-              <h2>{Cart.length} books</h2> <h2>₹ {Total}</h2>
+              <h2>{Cart.length} books</h2> <h2>Rs {Total}</h2>
             </div>
             <div className="w-[100%] mt-3">
               <button

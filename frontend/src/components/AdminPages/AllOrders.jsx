@@ -104,7 +104,7 @@ const AllOrders = () => {
                 <h1 className="">{items.book.desc.slice(0, 50)} ...</h1>
               </div>
               <div className="w-[17%] md:w-[9%]">
-                <h1 className="">₹ {items.book.price}</h1>
+                <h1 className="">Rs {items.book.price}</h1>
               </div>
               <div className="w-[30%] md:w-[16%]">
                 <h1 className="font-semibold ">

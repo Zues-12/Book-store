@@ -151,7 +151,7 @@ const ViewBookDetails = () => {
 
               <p className="text-zinc-500 mt-4 text-xl">Category: {Book.category}</p>
               <p className="mt-4 text-zinc-100 text-3xl font-semibold">
-                Price : ₹ {Book.price}{" "}
+                Price : Rs {Book.price}{" "}
               </p>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { CiMenuBurger } from "react-icons/ci";
+import { IoMenuSharp } from "react-icons/io5";
 import { useSelector } from "react-redux";
 const Navbar = ({toggleSidebar}) => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -46,10 +46,10 @@ const Navbar = ({toggleSidebar}) => {
         data-twe-navbar-ref
       >
         <div className="flex w-full flex-wrap items-center justify-between px-3">
-          <div className="ms-2  w-3/6 lg:w-1/6 flex justify-center items-center gap-4">
-            <div>
+          <div className="ms-2  w-3/6 lg:w-1/6 flex justify-center items-center gap-5">
+            <div className="hidden lg:block">
               <button className="h-10 w-10" onClick={toggleSidebar}>
-            <CiMenuBurger /></button>
+            <IoMenuSharp className=" size-8" /></button>
             </div>
             <Link
               to="/"
@@ -60,7 +60,7 @@ const Navbar = ({toggleSidebar}) => {
                 alt="logo"
                 className="h-10 me-4"
               />{" "}
-              BookHeaven
+              <div className="font-LogoTitle">Books Shelf</div>
             </Link>
           </div>
           <div className=" w-1/6 block  lg:hidden">

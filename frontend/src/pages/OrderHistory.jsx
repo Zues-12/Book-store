@@ -79,7 +79,7 @@ const OrderHistory = () => {
                 <h1 className="">{items.book.desc.slice(0, 50)} ...</h1>
               </div>
               <div className="w-[9%]">
-                <h1 className="">₹ {items.book.price}</h1>
+                <h1 className="">Rs {items.book.price}</h1>
               </div>
               <div className="w-[16%]">
                 <h1 className="font-semibold text-green-500">

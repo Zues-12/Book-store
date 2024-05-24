@@ -25,8 +25,8 @@ const Sidebar = ({isOpen, toggleSidebar}) => {
     ]
   return (
     <div className={`fixed top-0 left-0 h-full w-64 bg-zinc-800 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`}>
-        <div className='mt-5 mx-4'>
-        {isOpen && <button onClick={toggleSidebar}><IoArrowBack className='size-5 text-white'/></button>}
+        <div className='mt-7 mx-4'>
+        {isOpen && <button onClick={toggleSidebar}><IoArrowBack className='size-8 text-white'/></button>}
         </div>
         <div>
         <ul className="mt-16">
