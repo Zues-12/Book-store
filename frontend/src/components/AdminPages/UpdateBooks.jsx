@@ -172,9 +172,11 @@ const UpdateBooks = () => {
             <option value="Novel">Novel</option>
             <option value="Travalogue">Travalogue</option>
             <option value="Biography">Biography</option>
-            <option value="Short Stories">Short Stories</option>
+            <option value="Short-Stories">Short-Stories</option>
             <option value="Poetry">Poetry</option>
             <option value="Misc">Misc</option>
+            <option value="Essays">Essays</option>
+
 
             
             </select>
