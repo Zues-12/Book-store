@@ -139,7 +139,12 @@ const ViewBookDetails = () => {
                 {Book.title}
               </h1>
               <p className="text-zinc-400 mt-1">by {Book.author}</p>
-              <p className="text-zinc-500 mt-4 text-xl">{Book.desc}</p>
+              <p className="text-zinc-500 mt-4 text-xl"> {Book.desc.split('\n').map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}</p>
               <p className="flex mt-4 items-center justify-start text-zinc-400">
                 <GrLanguage className="me-3" /> {Book.language}
               </p>
