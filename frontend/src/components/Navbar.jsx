@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoMenuSharp } from "react-icons/io5";
+import { IoSearchSharp } from "react-icons/io5";
 import { useSelector } from "react-redux";
 const Navbar = ({toggleSidebar}) => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -62,6 +63,18 @@ const Navbar = ({toggleSidebar}) => {
               />{" "}
               <div className="font-LogoTitle">Books Shelf</div>
             </Link>
+          </div>
+          <div className="w-full lg:w-2/6 flex justify-center items-center">
+
+            <form className="w-full lg:w-5/6 flex items-center justify-center">
+              <input
+                type="text"
+                placeholder="Search books..."
+                className="w-full px-3 py-2 rounded bg-zinc-800 text-zinc-300 border border-blue-500"
+              />
+              <button><IoSearchSharp className=" text-white mx-2 size-5" /></button>
+              
+            </form>
           </div>
           <div className=" w-1/6 block  lg:hidden">
             <button
