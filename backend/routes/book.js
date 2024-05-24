@@ -136,7 +136,7 @@ router.get("/cart-item-count", async (req, res) => {
   try {
     const bookid = req.header("bookid");
 
-  
+
 
     // Count the occurrences of the book in all user carts
     const users = await User.find({ cart: bookid }).select("cart");
@@ -156,17 +156,36 @@ router.get("/cart-item-count", async (req, res) => {
 router.get("/get-book-by-category/:category", async (req, res) => {
   try {
     const { category } = req.params;
-    const book = await Book.find({category}).sort({createdAt:-1});
+    const book = await Book.find({ category }).sort({ createdAt: -1 });
     return res.json({
       status: "Success",
       data: book,
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "An error occurred" });
   }
 });
 
+
+//search bar
+router.get("/search/:key", async (req, res) => {
+  try {
+    let key = req.params.key;
+    let regex = new RegExp(key, "i"); // Create case-insensitive regular expression
+    let book = await Book.find({
+      "$or": [
+        {"title": { $regex: regex }},
+        {"author": { $regex: regex }},
+        {"category": { $regex: regex }},
+      ]
+    }).sort({ createdAt: -1 });
+
+    return res.send(book);
+  }
+  catch (error) {
+    return res.status.json({ message: "An error occured" });
+  }
+});
 
 
 
