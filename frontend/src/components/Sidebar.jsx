@@ -18,8 +18,12 @@ const Sidebar = ({isOpen, toggleSidebar}) => {
             title: "Categories",
             subitems: [
                 { title: "Poetry", link: '/Category/Poetry' },
-                { title: "Travelouge", link: '/categories/non-fiction' },
-                { title: "Biography", link: '/categories/sci-fi' },
+                { title: "Travelouge", link: '/Category/Travelouge' },
+                { title: "Biography", link: '/Category/Biography' },
+                { title: "Novel", link: '/Category/Novel' },
+                { title: "Misc", link: '/Category/Misc' },
+                { title: "Essays", link: '/Category/Essays' },
+                { title: "Short-Stories", link: '/Category/Short-Stories' },
               ]
         },
     ]
