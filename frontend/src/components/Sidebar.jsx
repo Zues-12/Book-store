@@ -13,6 +13,7 @@ const Sidebar = ({isOpen, toggleSidebar}) => {
             title: "Discover Books",
             link: '/all-books'
         },
+        
         {
             title: "Categories",
             subitems: [
