@@ -78,6 +78,13 @@ const AllOrders = () => {
             <div className="w-[17%] md:w-[9%]">
               <h1 className="">Price</h1>
             </div>
+
+
+            <div className="w-[17%] md:w-[9%]">
+              <h1 className="">Placed at</h1>
+            </div>
+
+
             <div className="w-[30%] md:w-[16%]">
               <h1 className="">Status</h1>
             </div>
@@ -105,6 +112,9 @@ const AllOrders = () => {
               </div>
               <div className="w-[17%] md:w-[9%]">
                 <h1 className="">Rs {items.book.price}</h1>
+              </div>
+              <div className="w-[17%] md:w-[9%]">
+                <h1 className="">{new Date(items.createdAt).toLocaleString()}</h1>
               </div>
               <div className="w-[30%] md:w-[16%]">
                 <h1 className="font-semibold ">
