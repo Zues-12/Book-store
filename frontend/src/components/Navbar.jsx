@@ -6,6 +6,10 @@ import { useSelector } from "react-redux";
 const Navbar = ({toggleSidebar}) => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const role = useSelector((state) => state.auth.role);
+
+  const [searchInput, setSearchInput] = useState("");
+  const [searchSuggestions, setSearchSuggestions] = useState([]);
+
   var links = [
     {
       title: "Home",
@@ -40,6 +44,28 @@ const Navbar = ({toggleSidebar}) => {
     links.splice(3, 1);
   }
 
+
+  useEffect(() => {
+    const fetchSuggestions = async () => {
+      if (searchInput.trim() === "") {
+        setSearchSuggestions([]);
+        return;
+      }
+  
+      try {
+        const response = await fetch(`http://localhost:1000/api/v1/search/${searchInput}`);
+        const data = await response.json();
+        setSearchSuggestions(data);
+      } catch (error) {
+        console.error("Error fetching search suggestions:", error);
+      }
+    };
+  
+    const debounceFetch = setTimeout(fetchSuggestions, 300);
+    return () => clearTimeout(debounceFetch);
+  }, [searchInput]);
+  
+
   return (
     <>
       <nav
@@ -67,13 +93,31 @@ const Navbar = ({toggleSidebar}) => {
           <div className="w-full lg:w-2/6 flex justify-center items-center">
 
             <form className="w-full lg:w-5/6 flex items-center justify-center">
-              <input
+            <input
                 type="text"
                 placeholder="Search books..."
                 className="w-full px-3 py-2 rounded bg-zinc-800 text-zinc-300 border border-blue-500"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                onBlur={() => setSearchSuggestions([])}
               />
-              <button><IoSearchSharp className=" text-white mx-2 size-5" /></button>
-              
+              <button type="button"><IoSearchSharp className="text-white mx-2 size-5" /></button>
+              {searchSuggestions.length > 0 && (
+                <div className="absolute top-full left-0 w-full bg-zinc-700 border border-blue-500 rounded mt-1 z-10">
+                  {searchSuggestions.map((book) => (
+                    <Link
+                    to={`/view-book-details/${book._id}`}
+                    key={book._id}
+                    className="block px-3 py-2 hover:bg-zinc-800"
+                    onClick={() => setSearchInput("") }
+                  >
+                    {book.title} by {book.author}
+                  </Link>
+                  
+                  ))}
+                </div>
+              )}
+
             </form>
           </div>
           <div className=" w-1/6 block  lg:hidden">

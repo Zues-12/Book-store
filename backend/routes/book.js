@@ -177,9 +177,8 @@ router.get("/search/:key", async (req, res) => {
       "$or": [
         {"title": { $regex: regex }},
         {"author": { $regex: regex }},
-        {"category": { $regex: regex }},
       ]
-    }).sort({ createdAt: -1 });
+    }).sort({ createdAt: -1 }).limit(6);
 
     return res.send(book);
   }
