@@ -99,8 +99,7 @@ const Navbar = ({toggleSidebar}) => {
                 className="w-full px-3 py-2 rounded bg-zinc-800 text-zinc-300 border border-blue-500"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
-                onBlur={() => setSearchSuggestions([])}
-              />
+                onBlur={() => setTimeout(() => setSearchSuggestions([]), 200)}              />
               <button type="button"><IoSearchSharp className="text-white mx-2 size-5" /></button>
               {searchSuggestions.length > 0 && (
                 <div className="absolute top-full left-0 w-full bg-zinc-700 border border-blue-500 rounded mt-1 z-10">
