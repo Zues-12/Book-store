@@ -64,6 +64,11 @@ const Navbar = ({toggleSidebar}) => {
     const debounceFetch = setTimeout(fetchSuggestions, 300);
     return () => clearTimeout(debounceFetch);
   }, [searchInput]);
+
+  const handleSearchSuggestionClick = (url) => {
+    window.location.href = url; // Reload the page with the new URL
+  };
+  
   
 
   return (
@@ -108,8 +113,8 @@ const Navbar = ({toggleSidebar}) => {
                     to={`/view-book-details/${book._id}`}
                     key={book._id}
                     className="block px-3 py-2 hover:bg-zinc-800"
-                    onClick={() => setSearchInput("") }
-                  >
+                    onClick={() => handleSearchSuggestionClick(`/view-book-details/${book._id}`)} // Pass book details page URL to click handler
+                    >
                     {book.title} by {book.author}
                   </Link>
                   
