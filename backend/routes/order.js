@@ -16,6 +16,7 @@ router.post("/place-order", authenticateToken, async (req, res) => {
       await User.findByIdAndUpdate(id, {
         $push: { orders: orderDataFromDb._id },
       });
+      //decrement Qty
       await Book.findByIdAndUpdate(orderData._id, {
         $inc: { qty:-1, }
       })
