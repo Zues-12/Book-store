@@ -3,12 +3,14 @@ const Book = require("../models/book");
 const multer = require('multer');
 const { authenticateToken } = require("./userAuth");
 const User = require("../models/user");
+const path = require('path');
+
 
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '../uploads/'); // Directory where images will be saved
+    cb(null, '../frontend/uploads/'); // Directory where images will be saved
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
@@ -23,8 +25,9 @@ const upload = multer({ storage: storage });
 //create book -- admin
 router.post("/add-book", authenticateToken, upload.single('image'), async (req, res) => {
   try {
+    const basname = path.basename(req.file.path)
     const book = new Book({
-      image: req.file.path, // Path to the uploaded image
+      image: basname, // Path to the uploaded image
       title: req.body.title,
       author: req.body.author,
       price: req.body.price,

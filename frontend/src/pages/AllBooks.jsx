@@ -24,7 +24,7 @@ const AllBooks = () => {
             {Books.map((items, i) => (
               <BookCard
                 bookid={items._id}
-                image={items.url}
+                image={items.image}
                 title={items.title}
                 author={items.author}
                 price={items.price}

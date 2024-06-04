@@ -94,7 +94,7 @@ const Cart = () => {
               key={i}
             >
               <img
-                src={items.url}
+                src={`..uploads/${items.image}`}
                 alt="/"
                 className="h-[20vh] md:h-[10vh] object-cover"
               />
