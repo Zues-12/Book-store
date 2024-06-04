@@ -41,8 +41,7 @@ const AddBook = () => {
         Data.author === "" ||
         Data.price === "" ||
         Data.desc === "" ||
-        Data.language === "" ||
-        Data.category === ""
+        Data.language === ""
       ) {
         alert("All fields are required");
       } else {
@@ -177,7 +176,7 @@ const AddBook = () => {
               className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
               name="category"
             >
-              <option value="Novel">Novel</option>
+              <option selected value="Novel">Novel</option>
               <option value="Travelogue">Travelogue</option>
               <option value="Biography">Biography</option>
               <option value="Short-Stories">Short-Stories</option>

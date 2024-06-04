@@ -94,7 +94,7 @@ const Cart = () => {
               key={i}
             >
               <img
-                src={`..uploads/${items.image}`}
+                src={`../uploads/${items.image}`}
                 alt="/"
                 className="h-[20vh] md:h-[10vh] object-cover"
               />
@@ -150,5 +150,6 @@ const Cart = () => {
     </div>
   );
 };
+
 
 export default Cart;

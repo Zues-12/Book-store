@@ -24,7 +24,6 @@ const BookCard = ({ image, title, author, price, bookid, fav }) => {
       <Link to={`/view-book-details/${bookid}`} className="">
         <div className="w-full flex items-center justify-center bg-zinc-900 ">
           <img src={`../uploads/${image}`} alt="book" className="h-40 object-cover" />
-          {console.log(image)}        
     </div>
         <h1 className="mt-4 text-xl font-semibold">{title}</h1>
         <p className="mt-2 text-zinc-400 font-semibold">by {author}</p>

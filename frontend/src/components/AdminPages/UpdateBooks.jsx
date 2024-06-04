@@ -79,12 +79,12 @@ const UpdateBooks = () => {
             Image
           </label>
           <input
-            type="text"
+            type="file"
             className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
-            placeholder="url of image"
-            name="url"
+            placeholder="upload image"
+            name="image"
             required
-            value={Data.url}
+            value={Data.image}
             onChange={change}
           />
         </div>
