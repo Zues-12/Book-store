@@ -25,15 +25,25 @@ const upload = multer({ storage: storage });
 //create book -- admin
 router.post("/add-book", authenticateToken, upload.single('image'), async (req, res) => {
   try {
-    const basname = path.basename(req.file.path)
+    const basename = path.basename(req.file.path)
+
+    const existingBook = await Book.findOne({ title: req.body.title, author: req.body.author });
+
+    if (existingBook) {
+      return res.status(420).json({
+        message: "Book already exists! You can change the quantity by editing the already existing book."
+      });
+    }
+
     const book = new Book({
-      image: basname, // Path to the uploaded image
+      image: basename, // Path to the uploaded image
       title: req.body.title,
       author: req.body.author,
       price: req.body.price,
       desc: req.body.desc,
       language: req.body.language,
       category: req.body.category,
+      qty: req.body.qty,
 
     });
     await book.save();
@@ -59,6 +69,7 @@ router.put("/update-book", authenticateToken, async (req, res) => {
       desc: req.body.desc,
       language: req.body.language,
       category: req.body.category,
+      qty: req.body.qty,
 
     });
 

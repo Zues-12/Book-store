@@ -9,6 +9,7 @@ const AddBook = () => {
     desc: "",
     language: "",
     category: "",
+    qty: "",
     image: null, // Add this for the file
   });
 
@@ -41,6 +42,7 @@ const AddBook = () => {
         Data.author === "" ||
         Data.price === "" ||
         Data.desc === "" ||
+        Data.qty === "" ||
         Data.language === ""
       ) {
         alert("All fields are required");
@@ -53,6 +55,8 @@ const AddBook = () => {
         formData.append('desc', Data.desc);
         formData.append('language', Data.language);
         formData.append('category', Data.category);
+        formData.append('qty', Data.qty);
+
 
         const response = await axios.post(
           "http://localhost:1000/api/v1/add-book",
@@ -67,6 +71,7 @@ const AddBook = () => {
           desc: "",
           language: "",
           category: "",
+          qty: "",
           image: null, // Reset the file input
         });
         alert(response.data.message);
@@ -167,24 +172,44 @@ const AddBook = () => {
               onChange={change}
             />
           </div>
-          <div className="w-3/6 mt-4">
-            <label htmlFor="category" className="text-zinc-400">Category</label>
-            <select
-              required
-              value={Data.category}
-              onChange={change}
-              className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
-              name="category"
-            >
-              <option selected value="Novel">Novel</option>
-              <option value="Travelogue">Travelogue</option>
-              <option value="Biography">Biography</option>
-              <option value="Short-Stories">Short-Stories</option>
-              <option value="Poetry">Poetry</option>
-              <option value="Misc">Misc</option>
-              <option value="Essays">Essays</option>
-            </select>
+
+          <div className="mt-4 flex gap-4">
+            <div className="w-3/6 mt-4">
+              <label htmlFor="category" className="text-zinc-400">Category</label>
+              <select
+                required
+                value={Data.category}
+                onChange={change}
+                className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+                name="category"
+              >
+                <option selected value="Novel">Novel</option>
+                <option value="Travelogue">Travelogue</option>
+                <option value="Biography">Biography</option>
+                <option value="Short-Stories">Short-Stories</option>
+                <option value="Poetry">Poetry</option>
+                <option value="Misc">Misc</option>
+                <option value="Essays">Essays</option>
+              </select>
+            </div>
+            <div className="w-3/6 mt-4">
+              <label htmlFor="qty" className="text-zinc-400 mt-2">
+                Quantity
+              </label>
+              <input
+                type="number"
+                className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+                placeholder="Quantity of books"
+                name="qty"
+                required
+                value={Data.qty}
+                onChange={change}
+              />
+            </div>
           </div>
+
+
+
           <button
             type="submit"
             className="mt-4 px-3 bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition-all duration-300"

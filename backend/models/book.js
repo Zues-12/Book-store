@@ -31,6 +31,11 @@ const book = new mongoose.Schema(
       required: true,
       default: "Misc",
       enum: ["Novel", "Biography","Short-Stories","Poetry","Misc","Essays", "Travelogue"],
+    }, 
+    qty: {
+      type: Number,
+      required: true,
+      default: 1,
     },
   },
   { timestamps: true }

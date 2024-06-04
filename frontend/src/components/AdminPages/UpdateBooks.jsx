@@ -28,6 +28,7 @@ const UpdateBooks = () => {
         desc: res.data.data.desc,
         language: res.data.data.language,
         category: res.data.data.category,
+        qty: res.data.data.qty,
       });
     };
     fetch();
@@ -74,20 +75,7 @@ const UpdateBooks = () => {
         Update Book
       </h1>
       <div className="p-4 bg-zinc-800 rounded">
-        <div>
-          <label htmlFor="" className="text-zinc-400">
-            Image
-          </label>
-          <input
-            type="file"
-            className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
-            placeholder="upload image"
-            name="image"
-            required
-            value={Data.image}
-            onChange={change}
-          />
-        </div>
+        
         <div className="mt-4">
           <label htmlFor="" className="text-zinc-400">
             Title of book
@@ -161,27 +149,43 @@ const UpdateBooks = () => {
           />
         </div>
 
-        <div className="w-3/6">
-            <label htmlFor="" className="text-zinc-400">Category
-            </label>
-            <select 
-            required
-            value={Data.category}
-            onChange={change}
-             className=" my-2 mx-4 p-2 bg-zinc-900 text-zinc-400 rounded-sm outline-none " name="category" id="categroy">
-            <option value="Novel">Novel</option>
-            <option value="Travelogue">Travelogue</option>
-            <option value="Biography">Biography</option>
-            <option value="Short-Stories">Short-Stories</option>
-            <option value="Poetry">Poetry</option>
-            <option value="Misc">Misc</option>
-            <option value="Essays">Essays</option>
-
-
-            
-            </select>
-
+        
+          <div className="mt-4 flex gap-4">
+            <div className="w-3/6 mt-4">
+              <label htmlFor="category" className="text-zinc-400">Category</label>
+              <select
+                required
+                value={Data.category}
+                onChange={change}
+                className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+                name="category"
+              >
+                <option selected value="Novel">Novel</option>
+                <option value="Travelogue">Travelogue</option>
+                <option value="Biography">Biography</option>
+                <option value="Short-Stories">Short-Stories</option>
+                <option value="Poetry">Poetry</option>
+                <option value="Misc">Misc</option>
+                <option value="Essays">Essays</option>
+              </select>
+            </div>
+            <div className="w-3/6 mt-4">
+              <label htmlFor="qty" className="text-zinc-400 mt-2">
+                Quantity
+              </label>
+              <input
+                type="number"
+                className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+                placeholder="Quantity of books"
+                name="qty"
+                required
+                value={Data.qty}
+                onChange={change}
+              />
+            </div>
           </div>
+
+
         <button
           className=" mt-4 px-3 bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition-all duration-300"
           onClick={update}
