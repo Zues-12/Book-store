@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const book = new mongoose.Schema(
   {
-    url: {
+    image: {
       type: String,
       required: true,
     },

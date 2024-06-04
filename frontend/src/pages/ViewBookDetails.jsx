@@ -10,12 +10,14 @@ import { MdDelete } from "react-icons/md";
 import Loader from "./Loader";
 import SameAuthor from "./SameAuthor";
 import Cartcount from "./Cartcount";
+
+
+
 const ViewBookDetails = () => {
   const { id } = useParams();
   const role = useSelector((state) => state.auth.role);
   const history = useNavigate();
   const [Book, setBook] = useState();
-
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,6 +26,7 @@ const ViewBookDetails = () => {
         `http://localhost:1000/api/v1/get-book-by-id/${id}`
       );
       setBook(res.data.data);
+
     };
     fetch();
   }, []);
@@ -89,10 +92,11 @@ const ViewBookDetails = () => {
           <div className="bg-zinc-900  px-12 py-8 flex flex-col lg:flex-row gap-8 h-auto">
             <div className="w-full lg:w-3/6 ">
               <div className=" flex flex-col md:flex-row items-start justify-around  bg-zinc-800 rounded px-4 py-8 gap-4 ">
+              {console.log(window.location.pathname)}
                 <img
-                  src={Book.url}
+                  src={Book.image}
                   alt="book"
-                  className="h-[50vh] md:h-[70vh] rounded "
+                  className="h-[50vh] md:h-[70vh] rounded"
                 />
                 {localStorage.getItem("id") && (
                   <div className=" w-full md:w-auto flex flex-row md:flex-col justify-between md:justify-start items-center  mt-4 md:mt-0  ">

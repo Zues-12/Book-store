@@ -1,14 +1,30 @@
 const router = require("express").Router();
 const Book = require("../models/book");
+const multer = require('multer');
 const { authenticateToken } = require("./userAuth");
 const User = require("../models/user");
 
 
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '../uploads/'); // Directory where images will be saved
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + '-' + file.originalname);
+  }
+});
+const upload = multer({ storage: storage });
+
+
+
+
 //create book -- admin
-router.post("/add-book", authenticateToken, async (req, res) => {
+router.post("/add-book", authenticateToken, upload.single('image'), async (req, res) => {
   try {
     const book = new Book({
-      url: req.body.url,
+      image: req.file.path, // Path to the uploaded image
       title: req.body.title,
       author: req.body.author,
       price: req.body.price,
