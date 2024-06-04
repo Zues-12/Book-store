@@ -9,6 +9,33 @@ router.post("/place-order", authenticateToken, async (req, res) => {
   try {
     const { id } = req.headers;
     const { order } = req.body;
+    const outOfStockBooks = []; // Array to store IDs of out-of-stock books
+
+
+    for (const orderData of order) {
+      const bookId = orderData._id;
+      const book = await Book.findById(bookId);
+      if (book.qty < 1) {
+        outOfStockBooks.push(bookId); // Add book ID to out-of-stock list
+        await User.findByIdAndUpdate(id, {
+          $pull: { cart: orderData._id },
+        });}
+    }
+    if (outOfStockBooks.length > 0) {
+      const outOfStockBookNames = await Promise.all(
+        outOfStockBooks.map(async (bookId) => {
+          const book = await Book.findById(bookId);
+          return book.title; 
+        })
+      );
+      const formattedOutOfStockList = outOfStockBookNames.join(", ");
+      return res.status(421).json({
+        message: `Order cannot be placed. The following books are out of stock: ${formattedOutOfStockList}`,
+      });
+    }
+
+
+
     for (const orderData of order) {
       const newOrder = new Order({ user: id, book: orderData._id });
       const orderDataFromDb = await newOrder.save();
@@ -18,7 +45,7 @@ router.post("/place-order", authenticateToken, async (req, res) => {
       });
       //decrement Qty
       await Book.findByIdAndUpdate(orderData._id, {
-        $inc: { qty:-1, }
+        $inc: { qty: -1, }
       })
       //clearing cart
       await User.findByIdAndUpdate(id, {

@@ -63,7 +63,9 @@ const Cart = () => {
       alert(response.data.message);
       navigate("/profile/orderHistory");
     } catch (error) {
-      console.log(error);
+      console.log(error)
+      alert(error.response.data.message);
+      ;
     }
   };
   return (
