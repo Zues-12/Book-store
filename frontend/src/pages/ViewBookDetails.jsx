@@ -82,7 +82,6 @@ const ViewBookDetails = () => {
 
 
 
-
   return (
     <>
       {!Book && <Loader />}
@@ -109,8 +108,13 @@ const ViewBookDetails = () => {
                           <GoHeartFill />
                         </button>
                         <button
-                          className="mt-0 md:mt-8 bg-blue-500 text-white p-3 rounded md:rounded-full text-2xl  font-semibold flex items-center hover:bg-blue-600 transition-all duration-300"
+                         className={`
+                         mt-0 md:mt-8 bg-blue-500 text-white p-3 rounded md:rounded-full text-2xl  font-semibold flex items-center hover:bg-blue-600 transition-all duration-300 ${
+                          Book.qty <= 0 ? "hidden" : "" // Hide button if qty <= 0
+                        }`}
+                        
                           onClick={addToCart}
+                          disabled={Book.qty <= 0}
                         >
                           <FaCartShopping className="me-4 md:me-0" />{" "}
                           <span className="block md:hidden">Add to cart</span>
@@ -143,6 +147,9 @@ const ViewBookDetails = () => {
                 {Book.title}
               </h1>
               <p className="text-zinc-400 mt-1">by {Book.author}</p>
+              <p className="text-zinc-200 font font-bold mt-1">Status: {`${Book.qty > 0 ? "In stock" : "Out of stock"} `}</p>
+
+
               <p className="text-zinc-500 mt-4 text-xl"> {Book.desc.split('\n').map((line, index) => (
                   <React.Fragment key={index}>
                     {line}

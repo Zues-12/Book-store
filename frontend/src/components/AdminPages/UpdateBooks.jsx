@@ -52,7 +52,8 @@ const UpdateBooks = () => {
         Data.price === "" ||
         Data.desc === "" ||
         Data.language === ""||
-        Data.category === ""
+        Data.category === ""||
+        Data.qty ===""
       ) {
         alert("All fields are required");
       } else {
