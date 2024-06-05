@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { IoMenuSharp } from "react-icons/io5";
 import { IoSearchSharp } from "react-icons/io5";
 import { useSelector } from "react-redux";
+
 const Navbar = ({toggleSidebar}) => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const role = useSelector((state) => state.auth.role);
@@ -88,7 +89,7 @@ const Navbar = ({toggleSidebar}) => {
               className="flex text-2xl font-semibold items-center justify-center "
             >
               <img
-                src="https://cdn-icons-png.flaticon.com/128/10433/10433049.png"
+                src="../public/10433049.png"
                 alt="logo"
                 className="h-10 me-4"
               />{" "}
