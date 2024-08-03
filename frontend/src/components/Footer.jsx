@@ -17,7 +17,7 @@ const Footer = () => {
     },
   ];
   return (
-    <div className="bg-blue-600 px-12 py-8  ">
+    <div className="bg-gradient-to-l from-zinc-900 to-blue-500 px-12 py-8  ">
       <div className="flex items-center justify-between">
         <h2 className="text-3xl font-semibold text-zinc-100 font-LogoTitle">Books Shelf</h2>
         <div className="flex flex-col md:flex-row">

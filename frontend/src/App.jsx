@@ -19,6 +19,7 @@ import AddBook from "./components/AdminPages/AddBook";
 import UpdateBooks from "./components/AdminPages/UpdateBooks";
 import Sidebar from "./components/Sidebar";
 import Category from "./pages/Category";
+import AboutUs from "./pages/AboutUs";
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen]=useState(false);
   const toggleSidebar = () =>{
@@ -63,6 +64,7 @@ const App = () => {
         {role === "admin" && (
           <Route path="/update-book/:id" element={<UpdateBooks />} />
         )}
+      <Route path="/about-us" element={<AboutUs />}></Route>  
       </Routes>
       <Footer />
     </div>

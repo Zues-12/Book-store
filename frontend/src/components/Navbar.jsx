@@ -75,14 +75,14 @@ const Navbar = ({toggleSidebar}) => {
   return (
     <>
       <nav
-        className="relative flex w-full flex-nowrap items-center justify-between bg-zinc-800 py-2 text-white  lg:flex-wrap lg:justify-start lg:py-4"
+        className="relative flex w-full flex-nowrap items-center justify-between bg-gradient-to-l from-zinc-900 to-blue-500 py-2 text-white  lg:flex-wrap lg:justify-start lg:py-4"
         data-twe-navbar-ref
       >
         <div className="flex w-full flex-wrap items-center justify-between px-3">
           <div className="ms-2  w-3/6 lg:w-1/6 flex justify-center items-center gap-5">
             <div className="hidden lg:block">
               <button className="h-10 w-10" onClick={toggleSidebar}>
-            <IoMenuSharp className=" size-8" /></button>
+            <IoMenuSharp className=" size-8 text-white" /></button>
             </div>
             <Link
               to="/"
@@ -96,17 +96,26 @@ const Navbar = ({toggleSidebar}) => {
               <div className="font-LogoTitle">Books Shelf</div>
             </Link>
           </div>
-          <div className="w-full lg:w-2/6 flex justify-center items-center">
+          <div className=" w-1/6 lg:hidden flex items-center ">
+            <button
+              className="text-3xl lg:hidden"
+              type="button"
+              onClick={() => setNav(Nav === "hidden" ? "block" : "hidden")}
+            >
+              <IoMenuSharp/>
+            </button>
+          </div>
+          <div className="w-4/6 px-10 lg:w-2/6 flex justify-items-center items-center">
 
             <form className="w-full lg:w-5/6 flex items-center justify-center">
             <input
                 type="text"
                 placeholder="Search books..."
-                className="w-full px-3 py-2 rounded bg-zinc-800 text-zinc-300 border border-blue-500"
+                className="hidden lg:block w-full px-3 py-2 rounded bg-zinc-800 text-zinc-300 border border-blue-500"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 onBlur={() => setTimeout(() => setSearchSuggestions([]), 200)}              />
-              <button type="button"><IoSearchSharp className="text-white mx-2 size-5" /></button>
+              <button type="button"><IoSearchSharp className="text-white mx-2 size-5 hidden lg:block" /></button>
               {searchSuggestions.length > 0 && (
                 <div className="absolute top-full left-0 w-full bg-zinc-700 border border-blue-500 rounded mt-1 z-10">
                   {searchSuggestions.map((book) => (
@@ -125,24 +134,6 @@ const Navbar = ({toggleSidebar}) => {
 
             </form>
           </div>
-          <div className=" w-1/6 block  lg:hidden">
-            <button
-              className="block border-0 bg-transparent px-2  hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0  lg:hidden"
-              type="button"
-              onClick={() => setNav(Nav === "hidden" ? "block" : "hidden")}
-            >
-              <span className="[&>svg]:w-7 [&>svg]:stroke-white ">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" />
-                </svg>
-              </span>
-            </button>
-          </div>
-
           <div className="5/6 hidden lg:block">
             <div className="flex items-center">
               {links.map((items, i) => (

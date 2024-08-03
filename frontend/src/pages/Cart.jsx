@@ -69,12 +69,12 @@ const Cart = () => {
     }
   };
   return (
-    <div className="h-auto bg-zinc-900 px-12 py-8">
+    <div className="h-auto bg-black px-12 py-8">
       {!Cart && <Loader />}
       {Cart && Cart.length === 0 && (
         <div className="h-screen">
           <div className="h-[100%] flex items-center justify-center flex-col">
-            <h1 className="text-5xl lg:text-6xl font-semibold text-zinc-400">
+            <h1 className="text-5xl lg:text-6xl font-semibold text-zinc-500">
               Empty Cart
             </h1>
             <img

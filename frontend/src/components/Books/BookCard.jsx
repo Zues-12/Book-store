@@ -20,7 +20,7 @@ const BookCard = ({ image, title, author, price, bookid, fav }) => {
     }
   };
   return (
-    <div className="w-full bg-zinc-800 text-zinc-100 rounded p-4 hover:scale-105 duration-150">
+    <div className="w-full bg-gradient-to-t from-zinc-900 to-blue-500 text-zinc-100 rounded p-4 hover:scale-105 duration-150">
       <Link to={`/view-book-details/${bookid}`} className="">
         <div className="w-full flex items-center justify-center bg-zinc-900 ">
           <img src={`../uploads/${image}`} alt="book" className="h-40 object-cover" />
