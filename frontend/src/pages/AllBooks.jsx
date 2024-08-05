@@ -7,11 +7,11 @@ const AllBooks = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetch = async () => {
+      console.log("hello")
       const response = await axios.get(
         "https://book-shlef-server.vercel.app/api/v1/get-all-books"
       );
       setBooks(response.data.data);
-      console.log(response)
     };
     fetch();
   }, []);
