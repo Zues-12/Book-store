@@ -93,7 +93,7 @@ const ViewBookDetails = () => {
               <div className=" flex flex-col md:flex-row items-start justify-around  bg-zinc-800 rounded px-4 py-8 gap-4 ">
               {console.log(Book.image)}
                 <img
-                  src={`../uploads/${Book.image}`}
+                  src={`/uploads/${Book.image}`}
                   alt="book"
                   className="h-[50vh] md:h-[70vh] rounded"
                 />
