@@ -9,7 +9,12 @@ const order = require("./routes/order");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 1000;
-app.use(cors());
+app.use(cors({
+  origin: ["https://book-shelf-client-six.vercel.app/"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}
+));
 app.use('../uploads', express.static('uploads'));
 app.use(express.json());
 
@@ -22,6 +27,10 @@ app.use("/api/v1", book);
 app.use("/api/v1", cart);
 app.use("/api/v1", fav);
 app.use("/api/v1", order);
+
+app.get("/", (req, res) => {
+  res.json({message: "Hello World"});
+})
 
 //SERVER
 app.listen(PORT, () => {

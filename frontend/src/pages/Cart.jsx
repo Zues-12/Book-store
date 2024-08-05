@@ -22,7 +22,7 @@ const Cart = () => {
     } else {
       const fetch = async () => {
         const res = await axios.get(
-          "http://localhost:1000/api/v1/get-user-cart",
+          "https://book-shlef-server.vercel.app/api/v1/get-user-cart",
           { headers }
         );
 
@@ -44,7 +44,7 @@ const Cart = () => {
   const deletItem = async (id) => {
     try {
       const response = await axios.put(
-        `http://localhost:1000/api/v1/remove-from-cart/${id}`,
+        `https://book-shlef-server.vercel.app/api/v1/remove-from-cart/${id}`,
         {},
         { headers }
       );
@@ -56,7 +56,7 @@ const Cart = () => {
   const PlaceOrder = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:1000/api/v1/place-order`,
+        `https://book-shlef-server.vercel.app/api/v1/place-order`,
         { order: Cart },
         { headers }
       );

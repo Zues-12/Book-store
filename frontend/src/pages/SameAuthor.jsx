@@ -8,7 +8,7 @@ const SameAuthor = ({headers}) => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "http://localhost:1000/api/v1/get-books-by-author",{headers},
+        "https://book-shlef-server.vercel.app/api/v1/get-books-by-author",{headers},
       );
       setBooks(response.data.data);
     };

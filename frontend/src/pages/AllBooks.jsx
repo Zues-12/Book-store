@@ -8,9 +8,10 @@ const AllBooks = () => {
     window.scrollTo(0, 0);
     const fetch = async () => {
       const response = await axios.get(
-        "http://localhost:1000/api/v1/get-all-books"
+        "https://book-shlef-server.vercel.app/api/v1/get-all-books"
       );
       setBooks(response.data.data);
+      console.log(response)
     };
     fetch();
   }, []);

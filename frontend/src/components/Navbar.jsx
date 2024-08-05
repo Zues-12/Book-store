@@ -54,7 +54,7 @@ const Navbar = ({toggleSidebar}) => {
       }
   
       try {
-        const response = await fetch(`http://localhost:1000/api/v1/search/${searchInput}`);
+        const response = await fetch(`https://book-shlef-server.vercel.app/api/v1/search/${searchInput}`);
         const data = await response.json();
         setSearchSuggestions(data);
       } catch (error) {

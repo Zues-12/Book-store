@@ -7,7 +7,7 @@ const Cartcount = ({headers}) => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "http://localhost:1000/api/v1/cart-item-count",{headers},
+        "https://book-shlef-server.vercel.app/api/v1/cart-item-count",{headers},
       );
       setCount(response.data.count);
     };

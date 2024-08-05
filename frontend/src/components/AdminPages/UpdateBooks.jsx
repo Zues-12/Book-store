@@ -17,7 +17,7 @@ const UpdateBooks = () => {
     window.scrollTo(0, 0);
     const fetch = async () => {
       const res = await axios.get(
-        `http://localhost:1000/api/v1/get-book-by-id/${id}`
+        `https://book-shlef-server.vercel.app/api/v1/get-book-by-id/${id}`
       );
 
       setData({
@@ -58,7 +58,7 @@ const UpdateBooks = () => {
         alert("All fields are required");
       } else {
         const response = await axios.put(
-          "http://localhost:1000/api/v1/update-book",
+          "https://book-shlef-server.vercel.app/api/v1/update-book",
           Data,
           { headers }
         );

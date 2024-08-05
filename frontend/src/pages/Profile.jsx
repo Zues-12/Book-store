@@ -22,7 +22,7 @@ const Profile = () => {
     } else {
       const fetch = async () => {
         const response = await axios.get(
-          "http://localhost:1000/api/v1/getUserData",
+          "https://book-shlef-server.vercel.app/api/v1/getUserData",
           { headers }
         );
         setProfileData(response.data);
